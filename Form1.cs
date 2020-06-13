@@ -17,11 +17,14 @@ namespace TrafficLights
         private Timer timerBlink = null;
         private PictureBox picB = null;
         private Color color = Color.Gray;
-        private int seconds = 0;
+        private int multiplicator = 0;
+        private Label labelTime = null;
+        private int sec = 0, min = 0, hours = 0;
 
         public TrafficLights()
         {
             InitializeComponent();
+            InitializeLabelTime();
             InitiaizeTrafficLights();
             InitializeTimerColorSwitch();
             InitializeTimerBlink();
@@ -62,11 +65,25 @@ namespace TrafficLights
             timerBlink.Tick += new EventHandler(TimerBlink_Tick);
         }
 
+        private void InitializeLabelTime()
+        {
+            labelTime = new Label()
+            {
+                Font = new Font("Tahoma", 18, FontStyle.Bold),
+                Width = 150,
+                Height = 50,
+                Top = 20,
+                Text = "00:00:00"
+            };
+            labelTime.Left = this.Width / 2 - labelTime.Width / 2;
+            this.Controls.Add(labelTime);
+        }
+
         private void TimerColorSwitch_Tick(object sender, EventArgs e)
         {
             switch (seconds)
             {
-                case 0:
+                case time:
                     RedLight.BackColor = Color.Red;
                     break;
                 case 3:
@@ -98,6 +115,43 @@ namespace TrafficLights
                     break;
             }
             seconds++;
+            UpdateTime();
+
+
+        }
+
+        private void UpdateTime()
+        {
+            sec++;
+
+            if(sec == 0)
+            {
+                min++;
+                sec = 0;
+            }
+            if (min == 60)
+            {
+                hours++;
+                min = 0;
+            }
+
+            if(hours == 24)
+            {
+                ResetClock();
+            }
+
+            UpdateLabel();
+        }
+
+        private void ResetClock()
+        {
+            hours = 0;
+            min = 0;
+            sec = 0;
+        }
+        private void UpdateLabel()
+        {
+            labelTime.Text = $"{hours:00}:{min:00}:{sec:00}";
         }
 
         private void TimerBlink_Tick(object sender, EventArgs e)

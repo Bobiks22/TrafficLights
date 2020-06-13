@@ -38,7 +38,7 @@
             // 
             // RedLight
             // 
-            this.RedLight.Location = new System.Drawing.Point(43, 29);
+            this.RedLight.Location = new System.Drawing.Point(43, 106);
             this.RedLight.Name = "RedLight";
             this.RedLight.Size = new System.Drawing.Size(100, 100);
             this.RedLight.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // YellowLight
             // 
-            this.YellowLight.Location = new System.Drawing.Point(43, 163);
+            this.YellowLight.Location = new System.Drawing.Point(43, 223);
             this.YellowLight.Name = "YellowLight";
             this.YellowLight.Size = new System.Drawing.Size(100, 100);
             this.YellowLight.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // GreenLight
             // 
-            this.GreenLight.Location = new System.Drawing.Point(43, 292);
+            this.GreenLight.Location = new System.Drawing.Point(43, 338);
             this.GreenLight.Name = "GreenLight";
             this.GreenLight.Size = new System.Drawing.Size(100, 100);
             this.GreenLight.TabIndex = 2;
